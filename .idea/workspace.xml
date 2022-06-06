@@ -15,12 +15,14 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitToolBoxStore">
     <option name="recentBranches">
@@ -207,6 +209,7 @@
       <updated>1654527502527</updated>
       <workItem from="1654527506477" duration="146000" />
       <workItem from="1654527668965" duration="2740000" />
+      <workItem from="1654531094077" duration="284000" />
     </task>
     <task id="LOCAL-00001" summary="git init">
       <created>1654530274210</created>
@@ -215,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654530274210</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="git init">
+      <created>1654531363929</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654531363929</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
