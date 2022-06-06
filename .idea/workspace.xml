@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02269566-48cd-48bb-9e04-369d09514d5f" name="Changes" comment="git init">
-      <change afterPath="$PROJECT_DIR$/compose/nginx/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compose/nginx/default.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compose/nginx/nginx.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compose/php/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compose/php/composer/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compose/php/www.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compose/php/xdebug.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nginx/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nginx/nginx.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/default.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/default.conf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +223,7 @@
       <updated>1654527502527</updated>
       <workItem from="1654527506477" duration="146000" />
       <workItem from="1654527668965" duration="2740000" />
-      <workItem from="1654531094077" duration="2567000" />
+      <workItem from="1654531094077" duration="3308000" />
     </task>
     <task id="LOCAL-00001" summary="git init">
       <created>1654530274210</created>
@@ -273,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654532531664</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="git init">
+      <created>1654534315829</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1654534315829</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
