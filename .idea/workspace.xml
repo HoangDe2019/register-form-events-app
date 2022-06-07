@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="84d0eaf2-12d7-41bb-ac42-43bef20830e1" name="Changes" comment="generate migration User Event EventType tables">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,6 +227,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/nginx" />
     </key>
@@ -346,7 +349,21 @@
       <option name="project" value="LOCAL" />
       <updated>1654620274560</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="generate migration User Event EventType tables">
+      <created>1654620305751</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1654620305751</updated>
+    </task>
+    <task id="LOCAL-00016" summary="generate migration User Event EventType tables">
+      <created>1654620315516</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1654620315516</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
