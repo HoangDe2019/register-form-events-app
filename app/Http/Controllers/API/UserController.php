@@ -25,13 +25,13 @@ class UserController extends Controller
      */
     public function registerEvent(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'registerEvent' => 'required|string|max:255',
-        ]);
+//        $validator = Validator::make($request->all(),[
+//            'content' => 'required|string|max:255',
+//        ]);
 
-        if($validator->fails()){
-            return response()->json($validator->errors());
-        }
+//        if($validator->fails()){
+//            return response()->json($validator->errors());
+//        }
 
         if (!empty($request->full_name)) {
             $names = explode(" ", trim($request->full_name));
@@ -50,18 +50,19 @@ class UserController extends Controller
             'first_name' => $first,
             'last_name' => $last,
             'password' => $password,
+            'created_at'=>time(),
         ]);
 
-        $UserRegisterJoinEvent = new Events();
         $user = User::latest()->id->get();
         $event_type = EventTypes::latest()->id->get();
 
         if (empty($user)) {
             $profileModel = new Events();
 
-            $checkEventType = EventTypes::model()->where('id', $event_type->id)->first();
+            $checkEventType = EventTypes->where('id', $event_type->id)->first();
+
             if(empty($checkEventType)){
-                throw new \Exception(Message::get("Error", "is not found event Type!"));
+                throw new \Exception("Error");
             }
             $profileParam = [
                 'user_id' => $user->id,

@@ -19,3 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/testAPI1', [\App\Http\Controllers\API\UserController::class, 'index']);
+Route::post('/create', [\App\Http\Controllers\API\UserController::class, 'registerEvent']);
