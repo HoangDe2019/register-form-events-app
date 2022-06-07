@@ -13,8 +13,8 @@ class UserController extends Controller
 {
     //
     public function index(){
-        $data = User::latest()->get();
-        return response()->json([UserResource::collection($data), 'User fetched.']);
+        $data = User::get();
+        return $data;//response()->json([UserResource::collection($data), 'User fetched.']);
     }
 
     /**
@@ -66,7 +66,8 @@ class UserController extends Controller
             $profileParam = [
                 'user_id' => $user->id,
                 'content' => $request->contents,
-                'event_type_id' => $checkEventType
+                'event_type_id' => $checkEventType,
+                'created_at'=> date(time())
             ];
             //print_r($profileParam); die;
 
