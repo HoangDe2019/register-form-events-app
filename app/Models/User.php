@@ -18,7 +18,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'full_name',
+        'first_name',
+        'last_name',
         'email',
         'password',
     ];
@@ -29,6 +31,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
+        'is_super',
         'password',
         'remember_token',
     ];
@@ -41,4 +44,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function useHasEvents()
+    {
+        return $this->hasMany(__NAMESPACE__ . '\events', 'user_id', 'id');
+    }
+
 }
