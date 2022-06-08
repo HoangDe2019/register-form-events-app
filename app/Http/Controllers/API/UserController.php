@@ -129,4 +129,44 @@ class UserController extends Controller
         }
         return response()->json($data);
     }
+
+    public function storeEventType(Request $input){
+        $program = new EventTypes([
+            'name' => $input->name_type_event,
+            'created_at' => date(time()),
+            'updated_at' => date(time())
+        ]);
+
+        $program->save();
+
+        return response()->json($program);
+    }
+
+    public function getALlEventTypes(Request $input){
+        $eventTypes = DB::table('event_types')->orderBy('id', 'DESC')->paginate(
+            $perPage = 2, $columns = ['*'], $pageName = 'page'
+        );
+
+        $data = [
+            'data' => $eventTypes
+        ];
+
+        return $data;
+    }
+
+    public function deleteEventType(Request $input, $id){
+        $res = EventTypes::find($id)->delete();
+        if ($res) {
+            $data = [
+                'status' => '1',
+                'msg' => 'success'
+            ];
+        } else {
+            $data = [
+                'status' => '0',
+                'msg' => 'fail'
+            ];
+        }
+        return response()->json($data);
+    }
 }

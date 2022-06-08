@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84d0eaf2-12d7-41bb-ac42-43bef20830e1" name="Changes" comment="hadnle jwt and update fun for user before and after login to auth with JWT">
+    <list default="true" id="84d0eaf2-12d7-41bb-ac42-43bef20830e1" name="Changes" comment="deploy heroku">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/EventTypeSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/EventTypeSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +263,7 @@
       <workItem from="1654622415746" duration="23000" />
       <workItem from="1654622656769" duration="16368000" />
       <workItem from="1654659451519" duration="3995000" />
-      <workItem from="1654677481192" duration="7256000" />
+      <workItem from="1654677481192" duration="9178000" />
     </task>
     <task id="LOCAL-00001" summary="git init">
       <created>1654530274210</created>
@@ -401,7 +405,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654694566201</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="deploy heroku">
+      <created>1654694790434</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1654694790434</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -422,6 +433,7 @@
     <MESSAGE value="git init" />
     <MESSAGE value="generate migration User Event EventType tables" />
     <MESSAGE value="hadnle jwt and update fun for user before and after login to auth with JWT" />
-    <option name="LAST_COMMIT_MESSAGE" value="hadnle jwt and update fun for user before and after login to auth with JWT" />
+    <MESSAGE value="deploy heroku" />
+    <option name="LAST_COMMIT_MESSAGE" value="deploy heroku" />
   </component>
 </project>
