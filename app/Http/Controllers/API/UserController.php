@@ -23,7 +23,7 @@ class UserController extends Controller
         );
 
         $data = [
-            'data'=>$users
+            'data' => $users
         ];
 
         return $data;
@@ -40,9 +40,9 @@ class UserController extends Controller
     {
         $input = $request;
 
-        $userCheckEmail = User::where(['email'=>$input->email])->first();
+        $userCheckEmail = User::where(['email' => $input->email])->first();
 
-        if (isEmpty($userCheckEmail)){
+        if (!isEmpty($userCheckEmail)) {
             throw new \Exception("Email is exits!");
         }
 
@@ -54,7 +54,7 @@ class UserController extends Controller
         }
 
         if (!empty($input->password)) {
-            $password = password_hash($input->password, PASSWORD_BCRYPT);
+            $password = bcrypt($request->password);
         }
 
         $program = new User([
@@ -64,9 +64,9 @@ class UserController extends Controller
             'password' => $password,
             'email' => $input->email,
             'is_supper' => 0,
-            'is_actived'=>1,
-            'created_at'=>date(time()),
-            'updated_at'=>date(time())
+            'is_actived' => 1,
+            'created_at' => date(time()),
+            'updated_at' => date(time())
         ]);
 
         $program->save();
@@ -80,16 +80,16 @@ class UserController extends Controller
             if (empty($checkEventType)) {
                 throw new \Exception("Error");
             }
-            $event_type = EventTypes::where(['id'=>$input->event_type_id])->first();
+            $event_type = EventTypes::where(['id' => $input->event_type_id])->first();
 
             if (empty($event_type['id'])) {
                 throw new \Exception("id Event is not found!!");
             }
 
             if ($event_type->id == 0) {
-                $content = "[work_location:  .'$input->contents.']";
+                $content = "{\"work_location\":\"$input->contents\"}";
             } else {
-                $content = "[hobby: $input->contents]";
+                $content = "{\"hobby\":\"$input->contents\"}";
             }
 
             $profileParam = new Events([
@@ -105,8 +105,28 @@ class UserController extends Controller
         return response()->json(['User register info to join event is successfully.' => $program]);
     }
 
-    public function getIdInfoUser($id){
-        $user =  User::getFirstBy('id');
-        return ['data' => $user];
+    public function getIdInfoUser($id)
+    {
+        $user = User::where(['id' => $id])->first();
+        $userEvent = Events::where(['user_id' => $id])->get();
+        return [$user, 'info_register_events' => $userEvent];
+    }
+
+    public function destroyEvent($id)
+    {
+        Events::where(['user_id'=>$id])->delete();
+        $res = User::find($id)->delete();
+        if ($res) {
+            $data = [
+                'status' => '1',
+                'msg' => 'success'
+            ];
+        } else {
+            $data = [
+                'status' => '0',
+                'msg' => 'fail'
+            ];
+        }
+        return response()->json($data);
     }
 }
