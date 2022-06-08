@@ -17,7 +17,8 @@ class Events extends Model
     protected $fillable = [
         'content',
         'user_id',
-        'event_type_id'
+        'event_type_id',
+        'content',
     ];
 
     /**

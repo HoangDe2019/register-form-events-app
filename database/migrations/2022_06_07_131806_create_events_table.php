@@ -16,12 +16,10 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('content');
-            $table->bigInteger('user_id');
-            $table->bigInteger('event_type_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('event_type_id');
             $table->timestamps();
-
-//            $table->foreign('user_id')
-//                ->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 //            $table->foreign('event_type_id')->references('id')->on('event_types')->onDelete('cascade');
         });
 

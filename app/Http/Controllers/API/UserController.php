@@ -7,75 +7,106 @@ use App\Http\Resources\UserResource;
 use App\Models\Events;
 use App\Models\EventTypes;
 use App\Models\User;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use function MongoDB\BSON\toJSON;
+use function PHPUnit\Framework\isEmpty;
 
 class UserController extends Controller
 {
     //
-    public function index(){
-        $data = User::get();
-        return $data;//response()->json([UserResource::collection($data), 'User fetched.']);
+    public function index()
+    {
+        $users = DB::table('users')->join('events', 'events.user_id', '=', 'users.id')->orderBy('users.id', 'DESC')->paginate(
+            $perPage = 2, $columns = ['*'], $pageName = 'page'
+        );
+
+        $data = [
+            'data'=>$users
+        ];
+
+        return $data;
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function registerEvent(Request $request)
     {
-//        $validator = Validator::make($request->all(),[
-//            'content' => 'required|string|max:255',
-//        ]);
+        $input = $request;
 
-//        if($validator->fails()){
-//            return response()->json($validator->errors());
-//        }
+        $userCheckEmail = User::where(['email'=>$input->email])->first();
 
-        if (!empty($request->full_name)) {
-            $names = explode(" ", trim($request->full_name));
+        if (isEmpty($userCheckEmail)){
+            throw new \Exception("Email is exits!");
+        }
+
+        if (!empty($input->full_name)) {
+            $names = explode(" ", trim($input->full_name));
             $last = $names[0];
             unset($names[0]);
             $first = !empty($names) ? implode(" ", $names) : null;
         }
 
-        if (!empty($request->password)) {
-            $password = password_hash($request->password, PASSWORD_BCRYPT);
+        if (!empty($input->password)) {
+            $password = password_hash($input->password, PASSWORD_BCRYPT);
         }
 
-        $program = User::create([
-            'full_name' => $request->full_name,
-            'email' => $request->email,
+        $program = new User([
+            'full_name' => $input->full_name,
             'first_name' => $first,
             'last_name' => $last,
             'password' => $password,
-            'created_at'=>time(),
+            'email' => $input->email,
+            'is_supper' => 0,
+            'is_actived'=>1,
+            'created_at'=>date(time()),
+            'updated_at'=>date(time())
         ]);
 
-        $user = User::latest()->id->get();
-        $event_type = EventTypes::latest()->id->get();
+        $program->save();
 
-        if (empty($user)) {
-            $profileModel = new Events();
+        $user = User::find(DB::table('users')->max('id'));
 
-            $checkEventType = EventTypes->where('id', $event_type->id)->first();
+        if (!empty($user)) {
 
-            if(empty($checkEventType)){
+            $checkEventType = DB::table('events')->join('event_types', 'event_types.id', '=', 'event_types.id')->where('events.event_type_id', 'event_types.id');
+
+            if (empty($checkEventType)) {
                 throw new \Exception("Error");
             }
-            $profileParam = [
-                'user_id' => $user->id,
-                'content' => $request->contents,
-                'event_type_id' => $checkEventType,
-                'created_at'=> date(time())
-            ];
-            //print_r($profileParam); die;
+            $event_type = EventTypes::where(['id'=>$input->event_type_id])->first();
 
-            $profileModel->create($profileParam);
+            if (empty($event_type['id'])) {
+                throw new \Exception("id Event is not found!!");
+            }
+
+            if ($event_type->id == 0) {
+                $content = "[work_location:  .'$input->contents.']";
+            } else {
+                $content = "[hobby: $input->contents]";
+            }
+
+            $profileParam = new Events([
+                'user_id' => $user->id,
+                'content' => $content,
+                'created_at' => time(),
+                'event_type_id' => $event_type->id
+            ]);
+
+            $profileParam->save();
 
         }
+        return response()->json(['User register info to join event is successfully.' => $program]);
+    }
 
-        return response()->json(['User register info to join event is successfully.', new ProgramResource($program)]);
+    public function getIdInfoUser($id){
+        $user =  User::getFirstBy('id');
+        return ['data' => $user];
     }
 }

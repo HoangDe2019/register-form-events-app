@@ -18,5 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/testAPI1', [\App\Http\Controllers\API\UserController::class, 'index']);
-Route::post('/create', [\App\Http\Controllers\API\UserController::class, 'registerEvent']);
+Route::get('/get-info-join-events', [\App\Http\Controllers\API\UserController::class, 'index']);
+Route::post('/register-form-event', [\App\Http\Controllers\API\UserController::class, 'registerEvent']);
+Route::get('/get-info-join-event/{id}', [\App\Http\Controllers\API\UserController::class, 'getIdInfoUser']);
